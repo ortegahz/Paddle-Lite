@@ -124,3 +124,9 @@ third-party/*
 
 # hiai libs
 ai_ddk_lib*
+
+lite/backends/opencl/utils/
+
+lite/backends/arm/math/dotprod/gemm_vsdot\.h
+
+lite/backends/arm/math/dotprod/gemm_sdot\.h
