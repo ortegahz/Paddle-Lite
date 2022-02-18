@@ -220,7 +220,7 @@ class ActivationComputeTester : public arena::TestCase {
       case GELU: {
         for (int i = 0; i < dims_.production(); i++) {
           output_data[i] = x_data[i] * 0.5 *
-                           (1.0 + std::erf(x_data[i] * 0.70710678118654752440));
+                           (1.0 + ::erf(x_data[i] * 0.70710678118654752440));
         }
         break;
       }

@@ -862,7 +862,7 @@ void act_abs<float>(const float* din, float* dout, int size, int threads) {
 template <typename T>
 void erf(const T* din, T* dout, int size, int threads) {
   for (int i = 0; i < size; ++i) {
-    dout[0] = std::erf(din[0]);
+    dout[0] = ::erf(din[0]);
     din++;
     dout++;
   }
@@ -1009,7 +1009,7 @@ void act_gelu<float>(
     const float sqrt_2 = std::sqrt(2.0);
     for (int i = 0; i < size; i++) {
       float x = *din;
-      *dout = 0.5 * x * (1 + std::erf(x / sqrt_2));
+      *dout = 0.5 * x * (1 + ::erf(x / sqrt_2));
       ++din;
       ++dout;
     }

@@ -806,7 +806,7 @@ void Blas<lite::TargetType::kX86>::VMERF(int n,
   CBlas<T>::VMERF(n, a, y, mode);
 #else
   for (int i = 0; i < n; ++i) {
-    y[i] = std::erf(a[i]);
+    y[i] = ::erf(a[i]);
   }
 #endif
 }
