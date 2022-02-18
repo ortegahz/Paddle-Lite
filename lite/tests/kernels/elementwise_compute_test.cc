@@ -71,7 +71,7 @@ T div(T a, T b) {
 
 template <class T>
 T floordiv(T a, T b) {
-  return static_cast<T>(std::trunc(a / b));
+  return static_cast<T>(::trunc(a / b));
 }
 
 template <class T>

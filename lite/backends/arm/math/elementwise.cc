@@ -2001,7 +2001,7 @@ void elementwise_floor_div<int64_t>(const int64_t* dinx,
                                     int64_t* dout,
                                     int num) {
   for (int i = 0; i < num; i++) {
-    *dout = static_cast<int64_t>(std::trunc(*dinx / *diny));
+    *dout = static_cast<int64_t>(::trunc(*dinx / *diny));
     dout++;
     dinx++;
     diny++;
@@ -2033,7 +2033,7 @@ void elementwise_floor_div_broadcast<int64_t>(const int64_t* dinx,
       const int64_t diny_data = diny[j];
       int64_t* dout_ptr = dout + offset;
       for (int p = 0; p < num; p++) {
-        *dout_ptr = static_cast<int64_t>(std::trunc(*din_ptr / diny_data));
+        *dout_ptr = static_cast<int64_t>(::trunc(*din_ptr / diny_data));
         dout_ptr++;
         din_ptr++;
       }

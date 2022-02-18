@@ -55,7 +55,7 @@ static inline T __attribute__((__always_inline__)) naive_div(T l, T r) {
 
 template <typename T>
 static inline T __attribute__((__always_inline__)) naive_floor_div(T l, T r) {
-  return static_cast<T>(std::trunc(l / r));
+  return static_cast<T>(::trunc(l / r));
 }
 
 template <typename T>

@@ -393,7 +393,7 @@ TEST(elementwise_broadcast, compute_fp32) {
         }));
     EXPECT_TRUE(paddle::lite::RunOnRandomArgs<float>(
         TARGET(kX86), "def", "floordiv", "", [](float l, float r) {
-          return static_cast<float>(std::trunc(l / r));
+          return static_cast<float>(::trunc(l / r));
         }));
     EXPECT_TRUE(paddle::lite::RunOnRandomArgs<float>(
         TARGET(kX86), "def", "pow", "", [](float l, float r) {
@@ -439,7 +439,7 @@ TEST(elementwise_broadcast, compute_i32) {
         }));
     EXPECT_TRUE(paddle::lite::RunOnRandomArgs<int32_t>(
         TARGET(kX86), "int32", "floordiv", "", [](int32_t l, int32_t r) {
-          return static_cast<int32_t>(std::trunc(l / r));
+          return static_cast<int32_t>(::trunc(l / r));
         }));
     EXPECT_TRUE(paddle::lite::RunOnRandomArgs<int32_t>(
         TARGET(kX86), "int32", "mod", "", [](int32_t l, int32_t r) {
@@ -491,7 +491,7 @@ TEST(elementwise_broadcast, compute_i64) {
         }));
     EXPECT_TRUE(paddle::lite::RunOnRandomArgs<int64_t>(
         TARGET(kX86), "int64", "floordiv", "", [](int64_t l, int64_t r) {
-          return static_cast<int64_t>(std::trunc(l / r));
+          return static_cast<int64_t>(::trunc(l / r));
         }));
     EXPECT_TRUE(paddle::lite::RunOnRandomArgs<int64_t>(
         TARGET(kX86), "int64", "mod", "", [](int64_t l, int64_t r) {

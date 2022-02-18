@@ -313,7 +313,7 @@ inline T NaiveDiv(T l, T r) {
 
 template <typename T>
 inline T NaiveFloorDiv(T l, T r) {
-  return static_cast<T>(std::trunc(l / r));
+  return static_cast<T>(::trunc(l / r));
 }
 
 template <typename T>
