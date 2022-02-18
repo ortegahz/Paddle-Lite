@@ -108,7 +108,8 @@ bool DeviceProgram::LoadFromCacheFile(
   for (int i = 0; i < output_names.size(); i++) {
     auto items = Split<std::string>(output_options[i], ":");
     CHECK_EQ(items.size(), 2);  // precision and shapes
-    origin_otypes_[i] = static_cast<PrecisionType>(std::stoi(items[0]));
+    // origin_otypes_[i] = static_cast<PrecisionType>(std::stoi(items[0]));
+    origin_otypes_[i] = static_cast<PrecisionType>(atoi(items[0]));
     origin_odims_[i] = Split<int64_t>(items[1], ",");
   }
   return true;

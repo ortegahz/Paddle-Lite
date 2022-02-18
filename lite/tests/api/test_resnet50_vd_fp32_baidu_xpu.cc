@@ -69,7 +69,8 @@ std::unordered_map<std::string, int> ReadLabels(const std::string& label_dir) {
   std::unordered_map<std::string, int> labels;
   for (auto line : lines) {
     std::string image = Split(line, " ")[0];
-    int label = std::stoi(Split(line, " ")[1]);
+    // int label = std::stoi(Split(line, " ")[1]);
+    int label = atoi(Split(line, " ")[1]);
     labels[image] = label;
   }
   return labels;

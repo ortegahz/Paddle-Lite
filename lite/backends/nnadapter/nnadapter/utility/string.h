@@ -28,22 +28,26 @@ static T string_parse(const std::string& v) {
 
 template <>
 int32_t string_parse<int32_t>(const std::string& v) {
-  return std::stoi(v);
+  // return std::stoi(v);
+  return atoi(v.c_str());
 }
 
 template <>
 int64_t string_parse<int64_t>(const std::string& v) {
-  return std::stoll(v);
+  // return std::stoll(v);
+  return atoll(v.c_str());
 }
 
 template <>
 float string_parse<float>(const std::string& v) {
-  return std::stof(v);
+  // return std::stof(v);
+  return atof(v.c_str());
 }
 
 template <>
 double string_parse<double>(const std::string& v) {
-  return std::stod(v);
+  // return std::stod(v);
+  return atof(v.c_str());
 }
 
 template <class T = std::string>

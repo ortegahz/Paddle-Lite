@@ -70,7 +70,8 @@ float CalOutAccuracy(const std::vector<std::vector<float>>& out_rets,
 
   auto label_lines = ReadLines(labels_dir);
   for (size_t i = 0; i < out_rets.size(); i++) {
-    int label = std::stoi(Split(label_lines[i], " ")[1]);
+    // int label = std::stoi(Split(label_lines[i], " ")[1]);
+    int label = atoi(Split(label_lines[i], " ")[1]);
 
     auto out = out_rets[i];
     auto largest = std::max_element(out.begin(), out.end());

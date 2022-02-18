@@ -83,8 +83,10 @@ int main(int argc, char** argv) {
     exit(1);
   }
   std::string model_dir = argv[1];
-  int im_height = std::stoi(argv[2]);
-  int im_width = std::stoi(argv[3]);
+  // int im_height = std::stoi(argv[2]);
+  // int im_width = std::stoi(argv[3]);
+  int im_height = atoi(argv[2]);
+  int im_width = atoi(argv[3]);
   RunModel(model_dir, im_height, im_width);
   std::cout << "Done" << std::endl;
   return 0;

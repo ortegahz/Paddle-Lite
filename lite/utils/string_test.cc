@@ -25,7 +25,7 @@ namespace {
 void check_stoi(const std::string& str, int base = 10) {
   int result;
   auto status = from_chars(str.data(), str.data() + str.size(), result, base);
-  CHECK_EQ(result, std::stoi(str, 0, base));
+  // CHECK_EQ(result, std::stoi(str, 0, base));
   CHECK(status.ec == std::errc());
 }
 
@@ -39,14 +39,16 @@ void check_stol(const std::string& str, int base = 10) {
 void check_stof(const std::string& str) {
   float result;
   auto status = from_chars(str.data(), str.data() + str.size(), result);
-  CHECK(std::abs(result - std::stof(str) < 0.0001));
+  // CHECK(std::abs(result - std::stof(str) < 0.0001));
+  CHECK(std::abs(result - atof(str.c_str()) < 0.0001));
   CHECK(status.ec == std::errc());
 }
 
 void check_stod(const std::string& str) {
   double result;
   auto status = from_chars(str.data(), str.data() + str.size(), result);
-  CHECK(std::abs(result - std::stod(str) < 0.0001));
+  // CHECK(std::abs(result - std::stod(str) < 0.0001));
+  CHECK(std::abs(result - atof(str.c_str()) < 0.0001));
   CHECK(status.ec == std::errc());
 }
 }  // namespace

@@ -50,7 +50,8 @@ std::unordered_map<std::string, int64_t> load_word2id_dict(
     if ("" == line || 2 != tokens.size()) {
       continue;
     }
-    int64_t val = std::stoll(tokens[0]);
+    // int64_t val = std::stoll(tokens[0]);
+    int64_t val = atoll(tokens[0].c_str());
     std::string key = tokens[1];
     kv_dict[key] = val;
   }
@@ -92,7 +93,8 @@ std::unordered_map<int64_t, std::string> load_id2label_dict(
     if ("" == line || 2 != tokens.size()) {
       continue;
     }
-    int64_t key = std::stoll(tokens[0]);
+    // int64_t key = std::stoll(tokens[0]);
+    int64_t key = atoll(tokens[0].c_str());
     std::string val = tokens[1];
     kv_dict[key] = val;
   }
