@@ -147,8 +147,8 @@ void DeltaScoreToPrediction(
     int class_num,
     const std::vector<std::pair<T, int>>& sorted_indices,
     std::map<int, std::vector<std::vector<T>>>* preds) {
-  im_height = static_cast<T>(std::round(im_height / im_scale));
-  im_width = static_cast<T>(std::round(im_width / im_scale));
+  im_height = static_cast<T>(::round(im_height / im_scale));
+  im_width = static_cast<T>(::round(im_width / im_scale));
   T zero(0);
   int i = 0;
   for (const auto& it : sorted_indices) {

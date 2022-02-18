@@ -108,7 +108,7 @@ void QuantizeWeightPerChannel(const Tensor& src,
         const float* src_end = src_start + inner_size;
         T* dest_start = dest_data + index;
         std::transform(src_start, src_end, dest_start, [scale](float x) {
-          return static_cast<T>(std::round(x / scale));
+          return static_cast<T>(::round(x / scale));
         });
       }
     }

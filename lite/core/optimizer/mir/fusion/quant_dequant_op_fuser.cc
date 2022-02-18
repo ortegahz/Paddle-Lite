@@ -63,7 +63,7 @@ void QuantizeTensorInPlace(Tensor* input, float scale) {
   float* temp_data = temp_tensor.mutable_data<float>();
   T* quantized_data = input->mutable_data<T>();
   for (size_t i = 0; i < input->numel(); i++) {
-    quantized_data[i] = static_cast<T>(std::round(temp_data[i] / scale));
+    quantized_data[i] = static_cast<T>(::round(temp_data[i] / scale));
   }
 }
 
@@ -101,7 +101,7 @@ void QuantizeTensorInPlace(Tensor* input,
       auto* src_end = origin_data + (i + 1) * step;
       auto* dest_start = quantized_data + i * step;
       std::transform(src_start, src_end, dest_start, [&scale](float x) {
-        return static_cast<T>(std::round(x / scale));
+        return static_cast<T>(::round(x / scale));
       });
     }
   } else if (quant_axis == 1) {
@@ -114,7 +114,7 @@ void QuantizeTensorInPlace(Tensor* input,
         auto* src_end = origin_data + i * step_i + (j + 1) * step_j;
         auto* dest_start = quantized_data + i * step_i + j * step_j;
         std::transform(src_start, src_end, dest_start, [&scale](float x) {
-          return static_cast<T>(std::round(x / scale));
+          return static_cast<T>(::round(x / scale));
         });
       }
     }
@@ -621,7 +621,7 @@ void DynamicQuantOpFuser::InsertNewNode(SSAGraph* graph,
   int64_t weight_num = weight_tensor->data_size();
   for (size_t i = 0; i < weight_num; i++) {
     weight_data[i] =
-        static_cast<int8_t>(std::round(temp_data[i] / weight_scale));
+        static_cast<int8_t>(::round(temp_data[i] / weight_scale));
   }
   weight_tensor->set_persistable(true);
   weight_tensor->set_precision(PRECISION(kInt8));

@@ -82,7 +82,7 @@ void get_transform_matrix(const int transformed_width,
   // Get the normalized height and normalized width
   int normalized_height = std::max(2, transformed_height);
   int normalized_width =
-      std::round(estimated_width * (normalized_height - 1) / estimated_height) +
+      ::round(estimated_width * (normalized_height - 1) / estimated_height) +
       1;
   normalized_width = std::max(2, std::min(normalized_width, transformed_width));
 

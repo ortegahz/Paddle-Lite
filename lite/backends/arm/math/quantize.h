@@ -33,7 +33,7 @@ float FindAbsMax(const float* input, int size);
 template <typename T>
 void QuantizeTensor(const float* input, T* output, int size, float scale) {
   auto quant_func = [scale](float x) {
-    return static_cast<T>(std::round(x / scale));
+    return static_cast<T>(::round(x / scale));
   };
   std::transform(input, input + size, output, quant_func);
 }
