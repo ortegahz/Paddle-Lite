@@ -60,3 +60,6 @@ message(STATUS "armlinux CMAKE_CXX_COMPILER: ${CMAKE_CXX_COMPILER}")
 
 # Definitions
 add_definitions(-DLITE_WITH_LINUX)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+add_definitions(-D_GLIBCXX_USE_C99=1)
