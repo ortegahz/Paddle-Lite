@@ -26,6 +26,10 @@ static inline T __attribute__((__always_inline__)) naive_relu(T a) {
   return a > 0 ? a : 0;
 }
 
+float naive_relu_float(float a) {
+  return a > 0 ? a : 0;
+}
+
 template <class T>
 static inline T __attribute__((__always_inline__)) naive_tanh(T a) {
   float x = expf(a);
@@ -38,9 +42,25 @@ static inline T __attribute__((__always_inline__)) naive_add(T l, T r) {
   return l + r;
 }
 
+int32_t naive_add_int32_t(int32_t a, int32_t b) {
+  return a + b;
+}
+
+int64_t naive_add_int64_t(int64_t a, int64_t b) {
+  return a + b;
+}
+
+float naive_add_float(float a, float b) {
+  return a + b;
+}
+
 template <typename T>
 static inline T __attribute__((__always_inline__)) naive_sub(T l, T r) {
   return l - r;
+}
+
+int32_t naive_sub_int32_t(int32_t a, int32_t b) {
+  return a - b;
 }
 
 template <typename T>

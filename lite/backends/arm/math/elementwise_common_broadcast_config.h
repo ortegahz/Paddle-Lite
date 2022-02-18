@@ -95,9 +95,9 @@ template <>
 struct BasicConfig<int32_t> {
   using T = int32_t;
   using NeonT = int32x4_t;
-  constexpr static auto neon_dup = vdupq_n_s32;
-  constexpr static auto neon_ld = vld1q_s32;
-  constexpr static auto neon_st = vst1q_s32;
+  constexpr static auto neon_dup = &vdupq_n_s32;
+  constexpr static auto neon_ld = &vld1q_s32;
+  constexpr static auto neon_st = &vst1q_s32;
   constexpr static int cnt_num = 4;
 };
 
@@ -105,9 +105,9 @@ template <>
 struct BasicConfig<int64_t> {
   using T = int64_t;
   using NeonT = int64x2_t;
-  constexpr static auto neon_dup = vdupq_n_s64;
-  constexpr static auto neon_ld = vld1q_s64;
-  constexpr static auto neon_st = vst1q_s64;
+  constexpr static auto neon_dup = &vdupq_n_s64;
+  constexpr static auto neon_ld = &vld1q_s64;
+  constexpr static auto neon_st = &vst1q_s64;
   constexpr static int cnt_num = 4;
 };
 
@@ -115,9 +115,9 @@ template <>
 struct BasicConfig<float> {
   using T = float;
   using NeonT = float32x4_t;
-  constexpr static auto neon_dup = vdupq_n_f32;
-  constexpr static auto neon_ld = vld1q_f32;
-  constexpr static auto neon_st = vst1q_f32;
+  constexpr static auto neon_dup = &vdupq_n_f32;
+  constexpr static auto neon_ld = &vld1q_f32;
+  constexpr static auto neon_st = &vst1q_f32;
   constexpr static int cnt_num = 4;
 };
 
@@ -135,9 +135,9 @@ struct ActiveConfig<ActiveType::NO_ACTIVE, DataType> {
 
 template <>
 struct ActiveConfig<ActiveType::RELU, float> {
-  constexpr static float (*naive_active)(float) = naive_relu<float>;
+  constexpr static float (*naive_active)(float) = &naive_relu_float;
   constexpr static float32x4_t (*neon_active)(const float32x4_t&) =
-      neon_relu_float;
+      &neon_relu_float;
 };
 
 template <class T>
@@ -145,20 +145,20 @@ struct AddConfig {};
 
 template <>
 struct AddConfig<int32_t> : public BasicConfig<int32_t> {
-  constexpr static auto naive_op = naive_add<int32_t>;
-  constexpr static auto neon_op = vaddq_s32;
+  constexpr static auto naive_op = &naive_add_int32_t;
+  constexpr static auto neon_op = &vaddq_s32;
 };
 
 template <>
 struct AddConfig<int64_t> : public BasicConfig<int64_t> {
-  constexpr static auto naive_op = naive_add<int64_t>;
-  constexpr static auto neon_op = vaddq_s64;
+  constexpr static auto naive_op = &naive_add_int64_t;
+  constexpr static auto neon_op = &vaddq_s64;
 };
 
 template <>
 struct AddConfig<float> : public BasicConfig<float> {
-  constexpr static auto naive_op = naive_add<float>;
-  constexpr static auto neon_op = vaddq_f32;
+  constexpr static auto naive_op = &naive_add_float;
+  constexpr static auto neon_op = &vaddq_f32;
 };
 
 template <class T>
@@ -166,8 +166,8 @@ struct SubConfig {};
 
 template <>
 struct SubConfig<int32_t> : public BasicConfig<int32_t> {
-  constexpr static auto naive_op = naive_sub<int32_t>;
-  constexpr static auto neon_op = vsubq_s32;
+  constexpr static auto naive_op = &naive_sub_int32_t;
+  constexpr static auto neon_op = &vsubq_s32;
 };
 
 #ifdef ENABLE_ARM_FP16
