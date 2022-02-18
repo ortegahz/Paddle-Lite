@@ -86,7 +86,7 @@ class ByteReader {
 
   template <typename T,
             typename = typename std::enable_if<
-                std::is_trivially_copyable<T>::value>::type>
+                __has_trivial_copy(T)>::type>
   T Read() const {
     T tmp;
     Read(&tmp, sizeof(T));
@@ -107,7 +107,7 @@ class ByteWriter {
 
   template <typename T,
             typename = typename std::enable_if<
-                std::is_trivially_copyable<T>::value>::type>
+                __has_trivial_copy(T)>::type>
   void Write(T elem) const {
     Write(&elem, sizeof(T));
   }
